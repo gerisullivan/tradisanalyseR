@@ -1,3 +1,21 @@
+#' Plot fold changes
+#'
+#' @description Creates fold change plots for a specified gene list.
+#'
+#' @param x The output from structure_embl()
+#' @param gene_list A character vector of genes for which you want to plot the log2 fold changes for.
+#' @param pathway_name A character of the pathway name, or what you want to prefix your plots (e.g. "Amino acid biosynthesis pathway").
+#' @param plot_type Either "gene" or "condition". Chooses which variable to facet by.
+#' @param save_plot TRUE or FALSE. If TRUE, will save to your current directory instead of outputting to the plot window. Default is FALSE.
+#'
+#' @return ggplots showing log2 fold change values for your gene list.
+#' @importFrom ggplot2 ggplot
+#' @importFrom stats complete.cases
+#' @importFrom grDevices dev.off pdf
+#' @importFrom utils read.csv2 read.delim
+#' @export
+#'
+#' @examples
 logfc_plots <- function(x, gene_list, pathway_name, plot_type, save_plot)
 {
   if(missing(save_plot)){save_plot = FALSE}
