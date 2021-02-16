@@ -4,8 +4,9 @@ Title: A collection of scripts to analyse TraDIS output from the Bio-TraDIS anal
 Version: 0.1.0
 Author: Geraldine Sullivan
 Maintainer: Geraldine Sullivan <geraldine.sullivan@hdr.mq.edu.au>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: A collection of scripts to analyse TraDIS output from the Bio-TraDIS analysis pipeline.
+    Can currently structure Bio-TraDIS csvs and corresponding EMBL files (structure_embl()) and
+    plot log fold changes for a gene list.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -16,3 +17,6 @@ Imports:
     purrr,
     stats,
     stringr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
