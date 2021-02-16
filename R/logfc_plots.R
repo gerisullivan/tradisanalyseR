@@ -9,7 +9,7 @@
 #' @param save_plot TRUE or FALSE. If TRUE, will save to your current directory instead of outputting to the plot window. Default is FALSE.
 #'
 #' @return ggplots showing log2 fold change values for your gene list.
-#' @importFrom ggplot2 ggplot
+#' @importFrom ggplot2 ggplot aes geom_bar facet_wrap scale_fill_manual theme element_text labs
 #' @importFrom stats complete.cases
 #' @importFrom grDevices dev.off pdf
 #' @importFrom utils read.csv2 read.delim

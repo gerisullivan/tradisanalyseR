@@ -3,7 +3,7 @@
 #' @description Takes Bio-TraDIS output .csvs and corresponding EMBL file and restructures data for further tradisanalyseR scripts. Working directory must be set to folder containing the correct files. All .csv files and .embl files will be uploaded.
 #'
 #' @return
-#' @importFrom dplyr %>% full_join
+#' @importFrom dplyr %>% full_join select contains
 #' @export
 #'
 #' @examples

@@ -1,0 +1,1 @@
+utils::globalVariables(c("Significance", "condition", "gene", "logFC"))
