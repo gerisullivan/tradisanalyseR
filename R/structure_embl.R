@@ -8,6 +8,9 @@
 #'
 #' @examples
 #'
+#' @usage setwd("/path/to/csv/folder/)
+#' @usage x <- structure_embl()
+#'
 structure_embl <- function(){
   print(paste0("Your working directory is set to: ", getwd()))
   embl <- read.csv2(list.files(pattern = "*.embl"), sep = " ")
@@ -39,11 +42,10 @@ structure_embl <- function(){
     logfc <- paste0(filenames[i], "_logFC")
     names <- append(names, logfc)
     q <- paste0(filenames[i], "_qvalue")
-    names <- append(names, logfc)
+    names <- append(names, q)
   }
 
   colnames(replace2) <- names
-
   x <- cbind(info, replace2)
 
   assign(x = "logFCs_all", value = x)
