@@ -50,7 +50,7 @@ logfc_plots <- function(x, gene_list, pathway_name, plot_type, save_plot)
       theme(axis.text.x = element_text(angle = 45)) +
       theme(plot.title = element_text(hjust = 0.5)) +
       labs(x = "Gene", title = pathway_name, y = "Log2 Fold Change")
-    plot
+    return(plot)
   }
   if (plot_type == "gene"){
     plot <- ggplot(data, aes(x = condition, y = logFC, group = condition, fill = Significance)) +
@@ -60,7 +60,7 @@ logfc_plots <- function(x, gene_list, pathway_name, plot_type, save_plot)
       theme(axis.text.x = element_text(angle = 45)) +
       theme(plot.title = element_text(hjust = 0.5)) +
       labs(x = "Gene", title = pathway_name, y = "Log2 Fold Change")
-    plot
+    return(plot)
   }
   if (save_plot == TRUE){
     print(paste0("Saving to Directory: ", getwd()))
