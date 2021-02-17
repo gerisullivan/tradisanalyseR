@@ -1,0 +1,11 @@
+locus_tag	gene	function	Ak125_logFC	Ak125_qvalue	Ak125Tp31_logFC	Ak125Tp31_qvalue
+BW25113_0001	thrL	thr operon leader peptide	0.026409593	1	-0.035812024	1
+BW25113_0002	thrA	Bifunctional aspartokinase/homoserine dehydrogenase 1	-0.007019413	1	0.047289316	0.03
+BW25113_0003	thrB	homoserine kinase	0.131531265	0.615731395	0.176236956	1
+BW25113_0004	thrC	L-threonine synthase	-0.009587576	1	0.08069932	1
+BW25113_0005	yaaX	DUF2502 family putative periplasmic protein	0.172760389	0.773035244	0.225407252	1
+BW25113_0006	yaaA	peroxide resistance protein, lowers intracellular iron	-0.048572398	0.934589898	0.011410594	1
+BW25113_0007	yaaJ	putative transporter	0.031369491	0.967491242	-0.25	1
+BW25113_0008	talB	transaldolase B	0.101568637	0.679315883	-0.060465104	0.0006235
+BW25113_0009	mog	molybdochelatase incorporating molybdenum into molybdopterin	-0.333578384	0.015782444	0.084227468	1
+BW25113_0010	satP	succinate-acetate transporter	0.126681478	0.69926633	-0.000982867	1

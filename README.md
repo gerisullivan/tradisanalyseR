@@ -7,7 +7,11 @@
 
 <!-- badges: end -->
 
-The goal of tradisanalyseR is to …
+tradisanalyseR was developed as a collection of scripts to further
+analyse output produced by the Bio-TraDIS toolkit
+(<https://github.com/sanger-pathogens/Bio-Tradis>). It takes the
+resulting csv files for any number of conditions and the corresponding
+EMBL file and formats it for use in these scripts.
 
 ## Installation
 
@@ -23,6 +27,16 @@ The development version from [GitHub](https://github.com/) with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("gerisullivan/tradisanalyseR")
+```
+
+tradisanalyseR has the following dependencies:
+
+``` r
+dplyr
+ggplot2
+purrr
+stats
+stringr
 ```
 
 ## Example
