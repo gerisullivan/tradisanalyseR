@@ -4,9 +4,7 @@
 \alias{structure_embl}
 \title{Data structuring}
 \usage{
-setwd("/path/to/csv/folder/)
-
-x <- structure_embl()
+x <- structure_embl(csvpath = "~/path/to/csvs/", emblpath = "~/path/to/embl/")
 }
 \arguments{
 \item{csvpath}{The path to your Bio-TraDIS csv output files.}

@@ -11,13 +11,11 @@
 #'
 #' @examples
 #'
-#' @usage setwd("/path/to/csv/folder/)
-#' @usage x <- structure_embl()
+#' @usage x <- structure_embl(csvpath = "~/path/to/csvs/", emblpath = "~/path/to/embl/")
 #'
 structure_embl <- function(csvpath = "", emblpath = ""){
   wd <- getwd()
   if(missing(emblpath)){emblpath = csvpath}
-  #print(paste0("Your working directory is set to: ", getwd()))
   setwd(emblpath)
   embl <- read.csv2(list.files(pattern = "*.embl"), sep = " ")
   embl <- as.data.frame(embl)
