@@ -4,13 +4,20 @@
 \alias{structure_embl}
 \title{Data structuring}
 \usage{
-structure_embl()
+setwd("/path/to/csv/folder/)
+
+x <- structure_embl()
+}
+\arguments{
+\item{csvpath}{The path to your Bio-TraDIS csv output files.}
+
+\item{emblpath}{The path to the folder containing the corresponding organism .embl file (optional - leave blank if the embl file is in the same directory as your input files).}
 }
 \value{
 
 }
 \description{
-Takes Bio-TraDIS output .csvs and corresponding EMBL file and restructures data for further tradisanalyseR scripts. Working directory must be set to folder containing the correct files. All .csv files and .embl files will be uploaded.
+Takes Bio-TraDIS output .csvs and corresponding EMBL file and restructures data for further tradisanalyseR scripts. All .csv files and .embl files will be uploaded.
 }
 \examples{
 

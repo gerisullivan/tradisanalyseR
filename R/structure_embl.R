@@ -2,6 +2,9 @@
 #'
 #' @description Takes Bio-TraDIS output .csvs and corresponding EMBL file and restructures data for further tradisanalyseR scripts. All .csv files and .embl files will be uploaded.
 #'
+#' @param csvpath The path to your Bio-TraDIS csv output files.
+#' @param emblpath The path to the folder containing the corresponding organism .embl file (optional - leave blank if the embl file is in the same directory as your input files).
+#'
 #' @return
 #' @importFrom dplyr %>% full_join select contains
 #' @export
@@ -11,10 +14,12 @@
 #' @usage setwd("/path/to/csv/folder/)
 #' @usage x <- structure_embl()
 #'
-structure_embl <- function(path = "", embl = ""){
-  if(missing(embl)){emblpath = path}
-  print(paste0("Your working directory is set to: ", getwd()))
-  embl <- read.csv2(list.files(path = emblpath, pattern = "*.embl"), sep = " ")
+structure_embl <- function(csvpath = "", emblpath = ""){
+  wd <- getwd()
+  if(missing(emblpath)){emblpath = csvpath}
+  #print(paste0("Your working directory is set to: ", getwd()))
+  setwd(emblpath)
+  embl <- read.csv2(list.files(pattern = "*.embl"), sep = " ")
   embl <- as.data.frame(embl)
   embl_filter <- embl[, sapply(embl, function (x) any(grepl('locus_tag', x)))]
   tag <- stringr::str_match(embl_filter, pattern = 'locus_tag.*')
@@ -26,7 +31,9 @@ structure_embl <- function(path = "", embl = ""){
   locus_tags <- as.data.frame(unique(locus_tags[!is.na(locus_tags)]))
   colnames(locus_tags) <- "locus_tag"
 
-  myfiles <- lapply(list.files(path = path, pattern = "*.csv"), read.delim)
+  setwd(csvpath)
+  myfiles <- lapply(list.files(pattern = "*.csv"), read.delim)
+  setwd(wd)
 
   joined <- myfiles %>% purrr::reduce(full_join, by = "locus_tag")
   all_locus <- list(joined, locus_tags) %>% purrr::reduce(full_join, by = "locus_tag")
@@ -46,14 +53,7 @@ structure_embl <- function(path = "", embl = ""){
     names <- append(names, q)
   }
 
-  colnames(rc)[2:ncol(rc)] <- names
-  rc$ob <- 1:nrow(rc)
-
-  melted <- melt(rc, id.vars = c("locus_tag", "ob"))
-
-  ggplot(melted, aes(y = value, x = ob)) +
-    geom_point(stat = "identity") +
-    facet_wrap(~variable)
-
-  assign(x = "logFCs_all", value = x)
+  colnames(replace2) <- names
+  out <- cbind(info, replace2)
+  return(out)
 }
