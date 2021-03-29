@@ -4,7 +4,7 @@
 #'
 #' @param x The output from structure_embl()
 #' @param gene_list A character vector of genes for which you want to plot the log2 fold changes for.
-#' @param pathway_name A character of the pathway name, or what you want to prefix your plots (e.g. "Amino acid biosynthesis pathway").
+#' @param pathway_name Optional. A character of the pathway name, or what you want to prefix your plots (e.g. "Amino acid biosynthesis pathway").
 #' @param plot_type Either "gene" or "condition". Chooses which variable to facet by.
 #' @param save_plot TRUE or FALSE. If TRUE, will save to your current directory instead of outputting to the plot window. Default is FALSE.
 #'
@@ -16,9 +16,9 @@
 #' @export
 #'
 #' @examples
-logfc_plots <- function(x, gene_list, pathway_name, plot_type, save_plot)
+logfc_plots <- function(x, gene_list, pathway_name, plot_type, save_plot = FALSE)
 {
-  if(missing(save_plot)){save_plot = FALSE}
+  if(missing(pathway_name)){pathway_name = "Genes of Interest"}
   subset <- x[x$gene %in% gene_list, ]
   subset2 <- as.data.frame(subset)
   rownames(subset2) <- subset2$gene

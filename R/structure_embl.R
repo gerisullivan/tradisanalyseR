@@ -31,7 +31,6 @@ structure_embl <- function(csvpath = "", emblpath = ""){
 
   setwd(csvpath)
   myfiles <- lapply(list.files(pattern = "*.csv"), read.delim)
-  setwd(wd)
 
   joined <- myfiles %>% purrr::reduce(full_join, by = "locus_tag")
   all_locus <- list(joined, locus_tags) %>% purrr::reduce(full_join, by = "locus_tag")
@@ -40,6 +39,7 @@ structure_embl <- function(csvpath = "", emblpath = ""){
   colnames(info) <- c("locus_tag", "gene", "function")
 
   filenames <- list.files(pattern = "*.csv") %>% gsub(pattern = ".csv", replacement = "")
+  setwd(wd)
   replace <- all_locus[,-c(1:3)]
   replace2 <- replace %>% select(-contains(c("CPM", "PValue", "gene_name", "function")))
 
