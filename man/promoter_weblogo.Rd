@@ -9,7 +9,7 @@ sig_promoters(logfcs, promoters, save_path = "~/Desktop/)
 \arguments{
 \item{x}{The output from structure_embl()}
 
-\item{promoters}{A data frame of gene names and their associated upstream sequences. Easily generated using Artemis (Select --> All CDS features. File --> Write --> Upstream bases of selected features --> FASTA format).}
+\item{promoters}{A data frame of locus tags and their associated upstream sequences. Can be generated using Artemis (Select --> All CDS features. File --> Write --> Upstream bases of selected features --> FASTA format). However, will need to edit for locus tags instead of gene name}
 
 \item{save_path}{Location to save the promoter weblogo}
 
