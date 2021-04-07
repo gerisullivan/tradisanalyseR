@@ -4,7 +4,7 @@
 \alias{promoter_weblogo}
 \title{Promoter sequence weblogo}
 \usage{
-sig_promoters(logfcs, promoters, save_path = "~/Desktop/)
+promoter_weblogo(x, promoters, save_path, save_fasta = FALSE)
 }
 \arguments{
 \item{x}{The output from structure_embl()}
@@ -13,8 +13,8 @@ sig_promoters(logfcs, promoters, save_path = "~/Desktop/)
 
 \item{save_path}{Location to save the promoter weblogo}
 
-\item{save_fasta}{TRUE or FALSE. Default is FALSE. If TRUE, will save to same directory as weblogo}
+\item{save_fasta}{TRUE or FALSE. If TRUE, will save to same directory as weblogo. (default = FALSE)}
 }
 \description{
-Matches the significant genes with their promoter regions and creates a weblogo of consensus regions. THIS CURRENTLY DOESN'T WORK FOR rRNA.
+Matches the significant genes with their promoter regions and creates a weblogo of consensus regions. This currently doesn't work for rRNA.
 }

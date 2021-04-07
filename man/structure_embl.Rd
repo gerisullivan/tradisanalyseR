@@ -4,7 +4,7 @@
 \alias{structure_embl}
 \title{Data structuring}
 \usage{
-x <- structure_embl(csvpath = "~/path/to/csvs/", emblpath = "~/path/to/embl/")
+structure_embl(csvpath = "", emblpath = "")
 }
 \arguments{
 \item{csvpath}{The path to your Bio-TraDIS csv output files.}
@@ -18,5 +18,6 @@ x <- structure_embl(csvpath = "~/path/to/csvs/", emblpath = "~/path/to/embl/")
 Takes Bio-TraDIS output .csvs and corresponding EMBL file and restructures data for further tradisanalyseR scripts. All .csv files and .embl files will be uploaded.
 }
 \examples{
+
 
 }

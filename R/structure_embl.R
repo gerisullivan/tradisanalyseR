@@ -11,7 +11,6 @@
 #'
 #' @examples
 #'
-#' @usage x <- structure_embl(csvpath = "~/path/to/csvs/", emblpath = "~/path/to/embl/")
 #'
 structure_embl <- function(csvpath = "", emblpath = ""){
   wd <- getwd()

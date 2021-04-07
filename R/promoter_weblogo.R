@@ -1,14 +1,12 @@
 #' Promoter sequence weblogo
 #'
-#' @description Matches the significant genes with their promoter regions and creates a weblogo of consensus regions. THIS CURRENTLY DOESN'T WORK FOR rRNA.
+#' @description Matches the significant genes with their promoter regions and creates a weblogo of consensus regions. This currently doesn't work for rRNA.
 #'
 #' @param x The output from structure_embl()
 #' @param promoters A data frame of locus tags and their associated upstream sequences. Can be generated using Artemis (Select --> All CDS features. File --> Write --> Upstream bases of selected features --> FASTA format). However, will need to edit for locus tags instead of gene name
 #' @param save_path Location to save the promoter weblogo
-#' @param save_fasta TRUE or FALSE. Default is FALSE. If TRUE, will save to same directory as weblogo
+#' @param save_fasta TRUE or FALSE. If TRUE, will save to same directory as weblogo. (default = FALSE)
 #'
-#' @usage
-#' sig_promoters(logfcs, promoters, save_path = "~/Desktop/)
 #'
 promoter_weblogo <- function(x, promoters, save_path, save_fasta = FALSE){
   for (i in seq(4, ncol(x), by=2)){
