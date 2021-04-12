@@ -27,9 +27,9 @@ diagnostics_rc <- function(path){
   rc <- rc[c(53,2:52)] #move observation column to front
 
   set <- EDASeq::newSeqExpressionSet(as.matrix(rc))
-  plotPCA(set)
+  EDASeq::plotPCA(set)
 
   png(paste0(path, "PCAplot_all.png"), height = 800, width = 1300, units = "px")
-  plotPCA(set)
+  EDASeq::plotPCA(set)
   dev.off()
 }
