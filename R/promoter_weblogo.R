@@ -21,8 +21,8 @@ promoter_weblogo <- function(x, promoters, save_path, save_fasta = FALSE){
     name <- gsub(pattern = "_logFC", replacement = "", colnames(data)[4])
     weblogo(as.character(data2$promoter), file.out = paste0(save_path, name, "_weblogo.png"), open = FALSE, format = "png",
             title = name, annotate = c(-100,"","","","",-95,"","","","",-90,"","","","",-85,"","","","",-80,
-                                       "","","","",-75,"","","","",-70,"","","","",-65,"","","","",-60,"",""
-                                       ,"","",-55,"","","","",-50,"","","","",-45,"","","","",-40,"","","",
+                                       "","","","",-75,"","","","",-70,"","","","",-65,"","","","",-60,"","",
+                                       "","",-55,"","","","",-50,"","","","",-45,"","","","",-40,"","","",
                                        "",-35,"","","","",-30,"","","","",-25,"","","","",-20,"","","","",-15,
                                        "","","","",-10,"","","","",-5,"","","",-1), xlabel = "position relative to TSS")
     if (save_fasta == TRUE){

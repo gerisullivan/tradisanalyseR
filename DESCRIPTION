@@ -14,9 +14,12 @@ RoxygenNote: 7.1.1
 biocViews:
 Imports:
     dplyr,
+    EDASeq,
     ggplot2,
     msa,
     purrr,
+    reshape2,
+    RUVSeq,
     RWebLogo,
     seqinr,
     stats,

@@ -13,10 +13,8 @@
 #'
 #'
 structure_embl <- function(csvpath = "", emblpath = ""){
-  wd <- getwd()
   if(missing(emblpath)){emblpath = csvpath}
-  setwd(emblpath)
-  embl <- read.csv2(list.files(pattern = "*.embl"), sep = " ")
+  embl <- read.csv2(list.files(path = emblpath, pattern = "*.embl", full.names = TRUE), sep = " ")
   embl <- as.data.frame(embl)
   embl_filter <- embl[, sapply(embl, function (x) any(grepl('locus_tag', x)))]
   tag <- stringr::str_match(embl_filter, pattern = 'locus_tag.*')
@@ -28,8 +26,7 @@ structure_embl <- function(csvpath = "", emblpath = ""){
   locus_tags <- as.data.frame(unique(locus_tags[!is.na(locus_tags)]))
   colnames(locus_tags) <- "locus_tag"
 
-  setwd(csvpath)
-  myfiles <- lapply(list.files(pattern = "*.csv"), read.delim)
+  myfiles <- lapply(list.files(path = csvpath, pattern = "*.csv", full.names = TRUE), read.delim)
 
   joined <- myfiles %>% purrr::reduce(full_join, by = "locus_tag")
   all_locus <- list(joined, locus_tags) %>% purrr::reduce(full_join, by = "locus_tag")
@@ -38,7 +35,6 @@ structure_embl <- function(csvpath = "", emblpath = ""){
   colnames(info) <- c("locus_tag", "gene", "function")
 
   filenames <- list.files(pattern = "*.csv") %>% gsub(pattern = ".csv", replacement = "")
-  setwd(wd)
   replace <- all_locus[,-c(1:3)]
   replace2 <- replace %>% select(-contains(c("CPM", "PValue", "gene_name", "function")))
 
