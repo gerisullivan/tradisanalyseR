@@ -27,10 +27,10 @@ diagnostics_fc <- function(path){
   colnames(replace2) <- names
   logfc <- replace2 %>% select(-contains(c("_pvalue")))
   logfc$ob <- 1:nrow(logfc)
-  meltfc <- melt(logfc, id.vars = "ob")
+  meltfc <- reshape2::melt(logfc, id.vars = "ob")
   meltfc$cond <- gsub(pattern = "_logFC", replacement = "", meltfc$variable)
 
-  fc <- ggplot(meltfc, aes(x = ob, y = value)) +
+  fc <- ggplot2::ggplot(meltfc, aes(x = ob, y = value)) +
     geom_point(size = 0.1) +
     facet_wrap(~cond) +
     ylab(label = "Log2 Fold Change") +
@@ -40,10 +40,10 @@ diagnostics_fc <- function(path){
 
   pvalue <- replace2 %>% select(-contains(c("logFC")))
   pvalue$ob <- 1:nrow(pvalue)
-  pmelt <- melt(pvalue, id.vars = "ob")
+  pmelt <- reshape2::melt(pvalue, id.vars = "ob")
   pmelt$cond <- gsub(pattern = "_pvalue", replacement = "", pmelt$variable)
 
-  pv <- ggplot(pmelt, aes(x = value)) +
+  pv <- ggplot2::ggplot(pmelt, aes(x = value)) +
     geom_histogram(binwidth = 0.05, fill = "gray65") +
     facet_wrap(~cond, scales = "free") +
     ylab(label = "Frequency") +
