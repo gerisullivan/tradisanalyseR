@@ -4,6 +4,7 @@
 #'
 #' @param path Path to file with *tradis_gene_insert_sites.csv files
 #'
+#' @export
 diagnostics_rc <- function(path){
   myfiles <- lapply(list.files(path = path, pattern = "*sites.csv", full.names = TRUE), read.delim)
   joined <- myfiles %>% purrr::reduce(full_join, by = "locus_tag") #join together by locus tag

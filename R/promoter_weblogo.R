@@ -7,7 +7,7 @@
 #' @param save_path Location to save the promoter weblogo
 #' @param save_fasta TRUE or FALSE. If TRUE, will save to same directory as weblogo. (default = FALSE)
 #'
-#'
+#' @export
 promoter_weblogo <- function(x, promoters, save_path, save_fasta = FALSE){
   for (i in seq(4, ncol(x), by=2)){
     wd <- getwd()

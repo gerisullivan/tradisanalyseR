@@ -8,6 +8,7 @@
 #' @param abslogFC Cutoff level for the absolute value of the logFC (default 0)
 #' @param subset Either "gene" or "all". "Gene" will output gene and logFC information only - great for input into EcoCyc. "all" will output locus tags, gene names and function with logFC data. (default= "all)
 #'
+#' @export
 get_sig <- function(x, save_path, sig = 0.05, abslogFC = 0, subset){
   if(missing(subset)){subset = "all"}
   if (abslogFC < 0) stop("'abslogFC' must be greater than 0")

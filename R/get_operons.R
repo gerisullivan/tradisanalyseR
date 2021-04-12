@@ -7,6 +7,7 @@
 #' @param abslogfc LogFC cutoff for output. Defaults to 0 to obtain all significant genes.
 #' @param sig Significance level cutoff for output. Defaults to 0.05.
 #'
+#' @export
 get_operons <- function(logfcs, x, abslogfc = 0, sig = 0.05){
 #logfcs <- read.delim("~/phd/data/TraDIS/analysis/corrected_logfcs.txt", sep = "\t")
 #ectable <- read.delim("~/phd/data/TraDIS/analysis/allgenes_operons_pathways.txt", sep = "\t")
