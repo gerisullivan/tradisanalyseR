@@ -43,14 +43,14 @@ diagnostics_fc <- function(path){
   pmelt$cond <- gsub(pattern = "_pvalue", replacement = "", pmelt$variable)
 
   pv <- ggplot2::ggplot(pmelt, aes(x = value)) +
-    geom_histogram(binwidth = 0.05, fill = "gray65") +
+    ggplot2::geom_histogram(binwidth = 0.05, fill = "gray65") +
     facet_wrap(~cond, scales = "free") +
     ylab(label = "Frequency") +
     xlab(label = "P-Value") +
     scale_x_continuous(breaks = c(0,0.5,1)) +
     theme_bw()
 
-    together <- grid.arrange(fc, pv, ncol = 2)
+    together <- gridExtra::grid.arrange(fc, pv, ncol = 2)
     plot(together)
     png(paste0(path, "diagnostics_FC_P_all.png"), height = 570, width = 1050, units = "px")
     plot(together)
