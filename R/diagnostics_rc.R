@@ -24,7 +24,7 @@ diagnostics_rc <- function(path){
   colnames(rc)[2:ncol(rc)] <- names #rename columns
   rownames(rc) <- rc[,1]
   rc <- rc[,-1]
-  rc[rowSums(rc[, -1])>0, ]
+  rc <- rc[rowSums(rc[, -1])>0, ]
 
   set <- EDASeq::newSeqExpressionSet(as.matrix(rc))
   EDASeq::plotPCA(set)
