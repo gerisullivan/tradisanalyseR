@@ -6,7 +6,6 @@
 #'
 #' @export
 diagnostics_fc <- function(path){
-  path = "~/phd/data/TraDIS/normalisation/edgeRout/logFC_out/"
   myfiles <- lapply(list.files(path = path, pattern = "*.csv", full.names = TRUE), read.delim)
   joined <- myfiles %>% purrr::reduce(full_join, by = "locus_tag")
   filenames <- list.files(path = path, pattern = "*.csv") %>%
