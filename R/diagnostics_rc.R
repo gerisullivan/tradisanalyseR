@@ -24,7 +24,7 @@ diagnostics_rc <- function(path){
   colnames(rc)[2:ncol(rc)] <- names #rename columns
   rc$observation <- 1:nrow(rc) #make observation column, 1-4488
   rownames(rc) <- rc[,1]
-  rc <- rc[c(53,2:52)] #move observation column to front
+  rc <- rc[c(ncol(rc),2:ncol(rc)-1)] #move observation column to front
 
   set <- EDASeq::newSeqExpressionSet(as.matrix(rc))
   EDASeq::plotPCA(set)
