@@ -6,7 +6,7 @@
 #'
 #' @export
 diagnostics_fc <- function(path){
-  myfiles <- lapply(list.files(path = path, pattern = "*.csv", full.names = TRUE), read.delim)
+  myfiles <- lapply(list.files(path = path, pattern = "*.csv", full.names = TRUE), read.delim, sep = ",")
   joined <- myfiles %>% purrr::reduce(full_join, by = "locus_tag")
   filenames <- list.files(path = path, pattern = "*.csv") %>%
     gsub(pattern = ".csv", replacement = "")
