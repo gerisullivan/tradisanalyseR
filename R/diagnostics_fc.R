@@ -30,7 +30,7 @@ diagnostics_fc <- function(path){
   meltfc$cond <- gsub(pattern = "_logFC", replacement = "", meltfc$variable)
 
   fc <- ggplot2::ggplot(meltfc, aes(x = ob, y = value)) +
-    geom_point(size = 0.1) +
+    ggplot2::geom_point(size = 0.1) +
     facet_wrap(~cond) +
     ylab(label = "Log2 Fold Change") +
     xlab(label = "Locus") +
