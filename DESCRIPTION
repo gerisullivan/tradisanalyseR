@@ -13,7 +13,7 @@ RoxygenNote: 7.1.1
 biocViews:
 Imports:
     dplyr,
-    EDASeq,
+    EDASeq (>= 2.24.0),
     ggplot2,
     gridExtra,
     msa,
