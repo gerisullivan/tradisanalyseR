@@ -1,9 +1,9 @@
-#' DIagnostics plots for read counts
+#' Plot transcription units
 #'
-#' @description Generates diagnostic plots using read counts as input.
+#' @description Takes a tab separated file with lists of genes in transcription units (made with BioCyc in mind) and output from structure_csv() to show transcription unit fold changes.
 #'
-#' @param logfcs Output from structure_embl()
-#' @param x Tab separated file of EcoCyc transcription unit output.
+#' @param logfcs Output from structure_csv()
+#' @param x Tab separated file of BioCyc transcription unit output.
 #' @param abslogfc LogFC cutoff for output. Defaults to 0 to obtain all significant genes.
 #' @param sig Significance level cutoff for output. Defaults to 0.05.
 #'

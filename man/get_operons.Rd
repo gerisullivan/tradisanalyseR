@@ -2,19 +2,19 @@
 % Please edit documentation in R/get_operons.R
 \name{get_operons}
 \alias{get_operons}
-\title{DIagnostics plots for read counts}
+\title{Plot transcription units}
 \usage{
 get_operons(logfcs, x, abslogfc = 0, sig = 0.05)
 }
 \arguments{
-\item{logfcs}{Output from structure_embl()}
+\item{logfcs}{Output from structure_csv()}
 
-\item{x}{Tab separated file of EcoCyc transcription unit output.}
+\item{x}{Tab separated file of BioCyc transcription unit output.}
 
 \item{abslogfc}{LogFC cutoff for output. Defaults to 0 to obtain all significant genes.}
 
 \item{sig}{Significance level cutoff for output. Defaults to 0.05.}
 }
 \description{
-Generates diagnostic plots using read counts as input.
+Takes a tab separated file with lists of genes in transcription units (made with BioCyc in mind) and output from structure_csv() to show transcription unit fold changes.
 }
