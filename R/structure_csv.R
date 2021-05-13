@@ -8,7 +8,7 @@
 #' @importFrom dplyr %>% full_join select contains
 #' @export
 #'
-structure_embl <- function(csvpath = ""){
+structure_csv <- function(csvpath = ""){
   myfiles <- lapply(list.files(path = csvpath, pattern = "*.csv", full.names = TRUE), read.delim, sep = ",")
 
   joined <- myfiles %>% purrr::reduce(full_join, by = "locus_tag")
