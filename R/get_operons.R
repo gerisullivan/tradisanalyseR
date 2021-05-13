@@ -29,7 +29,7 @@ for (i in seq(4, ncol(logfcs), by = 2)){
   paste0("Preparing plot for ", gsub("_logFC", replacement = "", colnames(data)[4]))
   p <- ggplot2::ggplot(mergeFC, aes(x = gene, y = mergeFC[,5], group = gene, fill = sig)) +
     ggplot2::geom_bar(stat = "identity", width = 0.7) +
-    ggplot2::scale_fill_manual(values = c("azure4", brewer.pal(2, "Set2"))) +
+    ggplot2::scale_fill_manual(values = c("azure4", RColorBrewer::brewer.pal(2, "Set2"))) +
     ggplot2::facet_wrap(~sig_gene, scales = "free") +
     ggplot2::theme(axis.text.x = element_text(angle = 25)) +
     ggplot2::theme(plot.title = element_text(hjust = 0.5)) +
