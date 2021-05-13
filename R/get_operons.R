@@ -13,7 +13,7 @@ get_operons <- function(logfcs, x, abslogfc = 0, sig = 0.05){
 #ectable <- read.delim("~/phd/data/TraDIS/analysis/allgenes_operons_pathways.txt", sep = "\t")
 ectable <- x[,c(1,3)]
 colnames(ectable) <- c("gene", "operon")
-operons <- separate_rows(ectable, operon, sep = " // ", convert = TRUE)
+operons <- tidyr::separate_rows(ectable, operon, sep = " // ", convert = TRUE)
 
 for (i in seq(4, ncol(logfcs), by = 2)){
   data <- logfcs[,c(1:3, i, i+1)]
@@ -27,13 +27,13 @@ for (i in seq(4, ncol(logfcs), by = 2)){
   mergeFC$sig <- ifelse(mergeFC[,6] >= 0.05, "Insignificant",
                               ifelse(mergeFC[,5] > 0, "Significant +ve", "Significant -ve"))
   paste0("Preparing plot for ", gsub("_logFC", replacement = "", colnames(data)[4]))
-  p <- ggplot(mergeFC, aes(x = gene, y = mergeFC[,5], group = gene, fill = sig)) +
-    geom_bar(stat = "identity", width = 0.7) +
-    scale_fill_manual(values = c("azure4", brewer.pal(2, "Set2"))) +
-    facet_wrap(~sig_gene, scales = "free") +
-    theme(axis.text.x = element_text(angle = 25)) +
-    theme(plot.title = element_text(hjust = 0.5)) +
-    labs(x = "Gene", title = gsub("_logFC", replacement = "", colnames(data)[4]), y = "Log2 Fold Change")
+  p <- ggplot2::ggplot(mergeFC, aes(x = gene, y = mergeFC[,5], group = gene, fill = sig)) +
+    ggplot2::geom_bar(stat = "identity", width = 0.7) +
+    ggplot2::scale_fill_manual(values = c("azure4", brewer.pal(2, "Set2"))) +
+    ggplot2::facet_wrap(~sig_gene, scales = "free") +
+    ggplot2::theme(axis.text.x = element_text(angle = 25)) +
+    ggplot2::theme(plot.title = element_text(hjust = 0.5)) +
+    ggplot2::labs(x = "Gene", title = gsub("_logFC", replacement = "", colnames(data)[4]), y = "Log2 Fold Change")
   print(p)
 }
 }
