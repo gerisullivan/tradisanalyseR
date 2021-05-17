@@ -2,7 +2,7 @@
 #'
 #' @description Matches the significant genes with their promoter regions and creates a weblogo of consensus regions. This currently doesn't work for rRNA.
 #'
-#' @param x The output from structure_embl()
+#' @param x The output from structure_csv()
 #' @param promoters A data frame of locus tags and their associated upstream sequences. Can be generated using Artemis (Select --> All CDS features. File --> Write --> Upstream bases of selected features --> FASTA format). However, will need to edit for locus tags instead of gene name. Need the first column to be named locus_tag.
 #' @param save_path Location to save the promoter weblogo
 #' @param save_fasta TRUE or FALSE. If TRUE, will save to same directory as weblogo. (default = FALSE)

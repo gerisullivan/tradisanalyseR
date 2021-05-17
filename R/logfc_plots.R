@@ -2,7 +2,7 @@
 #'
 #' @description Creates fold change plots for a specified gene list.
 #'
-#' @param x The output from structure_embl()
+#' @param x The output from structure_csv()
 #' @param gene_list A character vector of genes for which you want to plot the log2 fold changes for.
 #' @param pathway_name Optional. A character of the pathway name, or what you want to prefix your plots (e.g. "Amino acid biosynthesis pathway").
 #' @param plot_type Either "gene" or "condition". Chooses which variable to facet by.
