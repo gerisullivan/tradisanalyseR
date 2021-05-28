@@ -11,6 +11,7 @@
 promoter_weblogo <- function(x, promoters, save_path, save_fasta = FALSE){
   for (i in seq(4, ncol(x), by=2)){
     wd <- getwd()
+    if(missing(save_path)){save_path = wd}
     data <- x[,c(1:3,i,i+1)]
     data <- subset(data, data[,5]<0.05)
     data2 <- merge(data, promoters, by = "locus_tag", all.y = FALSE, all.x = TRUE)
