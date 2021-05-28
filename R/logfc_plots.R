@@ -15,7 +15,6 @@
 #' @importFrom utils read.csv2 read.delim
 #' @export
 #'
-#' @examples
 logfc_plots <- function(x, gene_list, pathway_name, plot_type, save_plot = FALSE)
 {
   if(missing(pathway_name)){pathway_name = "Genes of Interest"}
