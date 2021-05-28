@@ -7,7 +7,7 @@
 logfc_plots(x, gene_list, pathway_name, plot_type, save_plot = FALSE)
 }
 \arguments{
-\item{x}{The output from structure_embl()}
+\item{x}{The output from structure_csv()}
 
 \item{gene_list}{A character vector of genes for which you want to plot the log2 fold changes for.}
 

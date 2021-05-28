@@ -7,13 +7,13 @@
 get_operons(logfcs, x, abslogfc = 0, sig = 0.05)
 }
 \arguments{
-\item{logfcs}{Output from structure_csv()}
+\item{logfcs}{output from structure_csv()}
 
-\item{x}{Tab separated file of BioCyc transcription unit output.}
+\item{x}{tab separated file of BioCyc transcription unit output.}
 
-\item{abslogfc}{LogFC cutoff for output. Defaults to 0 to obtain all significant genes.}
+\item{abslogfc}{logFC cutoff for output. Defaults to 0 to obtain all significant genes.}
 
-\item{sig}{Significance level cutoff for output. Defaults to 0.05.}
+\item{sig}{significance level cutoff for output. Defaults to 0.05.}
 }
 \description{
 Takes a tab separated file with lists of genes in transcription units (made with BioCyc in mind) and output from structure_csv() to show transcription unit fold changes.
