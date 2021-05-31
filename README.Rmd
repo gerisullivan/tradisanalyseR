@@ -18,7 +18,8 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-tradisanalyseR was developed as a collection of scripts to further analyse output produced by the Bio-TraDIS toolkit (https://github.com/sanger-pathogens/Bio-Tradis). It takes the resulting csv files for any number of conditions and the corresponding EMBL file and formats it for use in these scripts.
+tradisanalyseR was developed as a collection of scripts to further analyse output produced by the Bio-TraDIS toolkit (https://github.com/sanger-pathogens/Bio-Tradis). It takes the resulting csv files for any number of conditions and formats it for use in these scripts.
+This is a work-in-progress. Please email Geri at geraldine.sullivan@hdr.mq.edu.au if you have any reproducibility issues.
 
 ## Installation
 
