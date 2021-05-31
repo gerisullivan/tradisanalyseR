@@ -7,7 +7,7 @@
 get_sig(x, save_path, sig = 0.05, abslogFC = 0, subset)
 }
 \arguments{
-\item{x}{output from structure_embl()}
+\item{x}{output from structure_csv()}
 
 \item{save_path}{Path to directory to save output files. If not provided, will save in current working directory.}
 
