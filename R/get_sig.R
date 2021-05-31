@@ -2,7 +2,7 @@
 #'
 #' @description Takes the logFC and significance values as outputted by tradis_comparison.R and makes new files. Will output only gene name and logFC (perfect for input into EcoCyc/BioCyc SmartTables)
 #'
-#' @param x output from structure_embl()
+#' @param x output from structure_csv()
 #' @param save_path Path to directory to save output files. If not provided, will save in current working directory.
 #' @param sig Significant level for cutoff (default 0.05)
 #' @param abslogFC Cutoff level for the absolute value of the logFC (default 0)
