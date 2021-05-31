@@ -38,8 +38,15 @@ devtools::install_github("gerisullivan/tradisanalyseR")
 tradisanalyseR has the following dependencies:
 ```r
 dplyr
+EDASeq (>= 2.24.0)
 ggplot2
+gridExtra
+msa
 purrr
+reshape2
+RUVSeq
+RWebLogo
+seqinr
 stats
 stringr
 ```
