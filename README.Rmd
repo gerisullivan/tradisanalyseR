@@ -41,6 +41,7 @@ tradisanalyseR has the following dependencies:
 dplyr
 EDASeq (>= 2.24.0)
 ggplot2
+ggseqlogo
 gridExtra
 msa
 purrr
