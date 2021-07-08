@@ -14,6 +14,15 @@ in these scripts. This is a work-in-progress. Please email Geri at
 <geraldine.sullivan@hdr.mq.edu.au> if you have any reproducibility
 issues.
 
+## Scripts
+### structure_csv()
+Takes all csv files from a folder and combines them into one data table for visualisation and further processing.
+
+### logfc_plots()
+Using the structure_csv() output and a gene list, plots log fold changes for those genes over all conditions in one graph.
+
+### 
+
 ## Installation
 
 <!-- You can install the released version of tradisanalyseR from  [CRAN](https://CRAN.R-project.org) with:
