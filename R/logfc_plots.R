@@ -18,11 +18,6 @@
 logfc_plots <- function(x, gene_list, plot_title, plot_type, save_plot = FALSE)
 {
   if(missing(plot_title)){plot_title = "Genes of Interest"}
-
-  plot_title = "Genes of Interest"
-  x <- logfcs
-  gene_list <- c("rpoS", "mukB", "rpoN")
-
   subset <- x[x$gene %in% gene_list, ]
   subset2 <- as.data.frame(subset)
   rownames(subset2) <- subset2$gene
