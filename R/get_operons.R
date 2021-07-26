@@ -27,7 +27,7 @@ get_operons <- function(logfcs, x, abslogfc = 0, sig = 0.05){
   mergeFC <- mergeFC %>% dplyr::group_by(sig_gene) %>% dplyr::filter(n()>1)
   mergeFC <- as.data.frame(mergeFC[!is.na(mergeFC[,5]),])
   mergeFC <- subset(mergeFC, !(as.character(mergeFC$gene) == as.character(mergeFC$sig_gene) & mergeFC$sig == "Insignificant"))
-  mergeFC <- mergeFC[!isUnique(mergeFC$sig_gene),]
+  mergeFC <- mergeFC[!Biobase::isUnique(mergeFC$sig_gene),]
   print(paste0("Preparing plot for ", gsub("_logFC", replacement = "", colnames(data)[4])))
   p <- ggplot2::ggplot(mergeFC, aes(x = gene, y = mergeFC[,5], group = gene, fill = sig)) +
     ggplot2::geom_bar(stat = "identity", width = 0.7) +

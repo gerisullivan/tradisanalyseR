@@ -12,6 +12,7 @@ LazyData: true
 RoxygenNote: 7.1.1
 biocViews:
 Imports:
+    Biobase,
     dplyr,
     EDASeq (>= 2.24.0),
     edgeR,
