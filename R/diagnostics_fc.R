@@ -31,11 +31,11 @@ diagnostics_fc <- function(path){
 
   fc <- ggplot2::ggplot(meltfc, aes(x = ob, y = value)) +
     ggplot2::geom_point(size = 0.1) +
-    facet_wrap(~cond) +
-    ylab(label = "Log2 Fold Change") +
-    xlab(label = "Locus") +
-    scale_x_continuous(breaks = c(0, (round(nrow(replace2), digits = -3))/2, round(nrow(replace2), digits = -3))) +
-    theme_bw()
+    ggplot2::facet_wrap(~cond) +
+    ggplot2::ylab(label = "Log2 Fold Change") +
+    ggplot2::xlab(label = "Locus") +
+    ggplot2::scale_x_continuous(breaks = c(0, (round(nrow(replace2), digits = -3))/2, round(nrow(replace2), digits = -3))) +
+    ggplot2::theme_bw()
 
   pvalue <- replace2 %>% select(-contains(c("logFC")))
   pvalue$ob <- 1:nrow(pvalue)
@@ -44,11 +44,11 @@ diagnostics_fc <- function(path){
 
   pv <- ggplot2::ggplot(pmelt, aes(x = value)) +
     ggplot2::geom_histogram(binwidth = 0.05, fill = "gray65") +
-    facet_wrap(~cond, scales = "free") +
-    ylab(label = "Frequency") +
-    xlab(label = "P-Value") +
-    scale_x_continuous(breaks = c(0,0.5,1)) +
-    theme_bw()
+    ggplot2::facet_wrap(~cond, scales = "free") +
+    ggplot2::ylab(label = "Frequency") +
+    ggplot2::xlab(label = "P-Value") +
+    ggplot2::scale_x_continuous(breaks = c(0,0.5,1)) +
+    ggplot2::theme_bw()
 
     together <- gridExtra::grid.arrange(fc, pv, ncol = 2)
     plot(together)
