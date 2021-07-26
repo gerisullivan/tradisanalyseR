@@ -14,9 +14,13 @@ biocViews:
 Imports:
     dplyr,
     EDASeq (>= 2.24.0),
+    edgeR,
     ggplot2,
     ggseqlogo,
+    grid,
+    gridBase,
     gridExtra,
+    limma,
     msa,
     patchwork,
     purrr,

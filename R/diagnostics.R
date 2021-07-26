@@ -38,9 +38,9 @@ diagnostics <- function(path, controls){
 
   print("Running comparisons")
   design <- model.matrix(~0+group) # create design
-  y <- DGEList(counts = as.matrix(rc), group=group) # design DGElist for input
-  y <- estimateGLMCommonDisp(y, design) # calculate negative binomial dispersion parameter
-  y <- estimateGLMTagwiseDisp(y, design) # calculate Bayes estimate of negative binomial dispersion parameters
+  y <- edgeR::DGEList(counts = as.matrix(rc), group=group) # design DGElist for input
+  y <- edgeR::estimateGLMCommonDisp(y, design) # calculate negative binomial dispersion parameter
+  y <- edgeR::estimateGLMTagwiseDisp(y, design) # calculate Bayes estimate of negative binomial dispersion parameters
   names <- levels(y$samples$group)
   names <- names[-1]
 
@@ -52,12 +52,12 @@ diagnostics <- function(path, controls){
 
   conts <- conts[!conts %in% "groupcontrol - groupcontrol"]
 
-  fit <- glmFit(y, design, robust=TRUE)
+  fit <- edgeR::glmFit(y, design, robust=TRUE)
 
   tags <- list()
   for (i in 1:length(conts)){
-    contrast <- makeContrasts(contrasts = conts[i], levels = design)
-    lrt <- glmLRT(fit, contrast = contrast)
+    contrast <- limma::makeContrasts(contrasts = conts[i], levels = design)
+    lrt <- edgeR::glmLRT(fit, contrast = contrast)
     tags[[i]] <- lrt$table
   }
 
