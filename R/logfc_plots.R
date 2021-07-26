@@ -42,29 +42,29 @@ logfc_plots <- function(x, gene_list, plot_title, plot_type, save_plot = FALSE)
 
   if (plot_type == "condition"){
     # plot facet by condition
-    plot <- ggplot(data, aes(x = gene, y = logFC, group = gene, fill = Significance)) +
-      geom_bar(stat = "identity") +
-      facet_wrap(~condition) +
-      scale_fill_manual(values = c("gray20", "green4", "red")) +
-      theme_light() +
-      theme(axis.text.x = element_text(angle = 45, hjust = 0.95),
+    plot <- ggplot2::ggplot(data, aes(x = gene, y = logFC, group = gene, fill = Significance)) +
+      ggplot2::geom_bar(stat = "identity") +
+      ggplot2::facet_wrap(~condition) +
+      ggplot2::scale_fill_manual(values = c("gray20", "green4", "red")) +
+      ggplot2::theme_light() +
+      ggplot2::theme(axis.text.x = element_text(angle = 45, hjust = 0.95),
             plot.title = element_text(hjust = 0.5, size = 20),
             strip.background = element_rect(colour = "black", fill = "gray90"),
             strip.text = element_text(color = "black", size = 12)) +
-      labs(x = "Gene", title = plot_title, y = "Log2 Fold Change")
+      ggplot2::labs(x = "Gene", title = plot_title, y = "Log2 Fold Change")
     print(plot)
   }
   if (plot_type == "gene"){
-    plot <- ggplot(data, aes(x = condition, y = logFC, group = condition, fill = Significance)) +
-      geom_bar(stat = "identity") +
-      facet_wrap(~gene) +
-      scale_fill_manual(values = c("gray20", "green4", "red")) +
-      theme_light() +
-      theme(axis.text.x = element_text(angle = 45, hjust = 0.95),
+    plot <- ggplot2::ggplot(data, aes(x = condition, y = logFC, group = condition, fill = Significance)) +
+      ggplot2::geom_bar(stat = "identity") +
+      ggplot2::facet_wrap(~gene) +
+      ggplot2::scale_fill_manual(values = c("gray20", "green4", "red")) +
+      ggplot2::theme_light() +
+      ggplot2::theme(axis.text.x = element_text(angle = 45, hjust = 0.95),
             plot.title = element_text(hjust = 0.5, size = 20),
             strip.background = element_rect(colour = "black", fill = "gray90"),
             strip.text = element_text(color = "black", size = 12)) +
-      labs(x = "Gene", title = plot_title, y = "Log2 Fold Change")
+      ggplot2::labs(x = "Gene", title = plot_title, y = "Log2 Fold Change")
     print(plot)
   }
   if (save_plot == TRUE){
