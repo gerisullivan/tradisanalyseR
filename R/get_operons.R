@@ -24,7 +24,7 @@ get_operons <- function(logfcs, x, abslogfc = 0, sig = 0.05){
   mergeFC <- merge(genes, data, by = "gene", all.x = TRUE)
   mergeFC$sig <- ifelse(mergeFC[,6] >= 0.05, "Insignificant",
                               ifelse(mergeFC[,5] > 0, "Significant +ve", "Significant -ve"))
-  mergeFC <- mergeFC %>% dplyr::group_by(sig_gene) %>% filter(n()>1)
+  mergeFC <- mergeFC %>% dplyr::group_by(sig_gene) %>% dplyr::filter(n()>1)
   mergeFC <- as.data.frame(mergeFC[!is.na(mergeFC[,5]),])
   mergeFC <- subset(mergeFC, !(as.character(mergeFC$gene) == as.character(mergeFC$sig_gene) & mergeFC$sig == "Insignificant"))
   mergeFC <- mergeFC[!isUnique(mergeFC$sig_gene),]
