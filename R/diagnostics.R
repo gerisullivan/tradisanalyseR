@@ -88,12 +88,12 @@ diagnostics <- function(path, controls){
   grid::pushViewport(vps$figure)
   vp1 <- grid::plotViewport(c(1.3,1,4.5,1.5))
   p2 <- ggplot(melt_fc, aes(x = observation, y = value)) + #plot logFC for all conditions
-    geom_point(size = 0.1) +
-    facet_wrap(~variable) +
-    labs(x = "Locus", y = "Log2 Fold Change") +
-    theme(strip.background = NULL, strip.text = element_text(size = 12),
+    ggplot2::geom_point(size = 0.1) +
+    ggplot2::facet_wrap(~variable) +
+    ggplot2::labs(x = "Locus", y = "Log2 Fold Change") +
+    ggplot2::theme(strip.background = NULL, strip.text = element_text(size = 12),
           axis.title = element_text(size = 12), axis.text = element_text(size = 10)) +
-    scale_x_continuous(breaks = c(0, (round(nrow(rc), digits = -3))/2, round(nrow(rc), digits = -3)))
+    ggplot2::scale_x_continuous(breaks = c(0, (round(nrow(rc), digits = -3))/2, round(nrow(rc), digits = -3)))
   print(p2, vp = vp1)
   mtext(expression(paste(bold("Diagnostics"), " - Principle Component Analysis and Locus vs Log" [2], " Fold Change")), side = 3, line = -4, outer = TRUE, cex = 2.2)
   dev.off()
