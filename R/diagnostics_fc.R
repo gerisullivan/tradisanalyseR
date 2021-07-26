@@ -6,6 +6,9 @@
 #'
 #' @export
 diagnostics_fc <- function(path){
+
+  path = "~/Desktop/logFC/"
+
   myfiles <- lapply(list.files(path = path, pattern = "*.csv", full.names = TRUE), read.delim, sep = ",")
   joined <- myfiles %>% purrr::reduce(full_join, by = "locus_tag")
   filenames <- list.files(path = path, pattern = "*.csv") %>%
@@ -24,6 +27,7 @@ diagnostics_fc <- function(path){
   }
 
   colnames(replace2) <- names
+  replace2 <- replace2[,c(1:(2*length(filenames)))]
   logfc <- replace2 %>% select(-contains(c("_pvalue")))
   logfc$ob <- 1:nrow(logfc)
   meltfc <- reshape2::melt(logfc, id.vars = "ob")
