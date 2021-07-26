@@ -9,10 +9,11 @@
 #'
 #' @export
 promoter_weblogo <- function(logfcs, promoters, save_plot = FALSE, save_path, save_fasta = FALSE){
+  wd <- getwd()
+  if(missing(save_plot)){save_path = FALSE}
+  if(missing(save_path)){save_path = wd}
   for (i in seq(4, ncol(logfcs), by=2)){
-    wd <- getwd()
-    if(missing(save_plot)){save_path = FALSE}
-    if(missing(save_path)){save_path = wd}
+    plot.new()
     data <- logfcs[,c(1:3,i,i+1)]
     data <- subset(data, data[,5]<0.05)
     data2 <- merge(data, promoters, by = "locus_tag", all.y = FALSE, all.x = TRUE)
@@ -22,13 +23,13 @@ promoter_weblogo <- function(logfcs, promoters, save_plot = FALSE, save_path, sa
     data2 <- data2[!is.na(data2$promoter),]
     name <- gsub(pattern = "_logFC", replacement = "", colnames(data)[4])
 
-    p1 <- ggplot() +
+    p1 <- ggplot2::ggplot() +
       ggseqlogo::geom_logo(substring(toupper(data2$promoter), 1, 25),
                            seq_type = "dna", method = "probability", rev_stack_order = TRUE) +
       theme(axis.title.y = element_text(size = 20),
             plot.title = element_text(size = 40))
     p1$scales$scales[[1]] <- scale_x_continuous(breaks= seq(1,25,by=5),labels=c("-50", "-45", "-40", "-35", "-30"))
-    p2 <- ggplot() +
+    p2 <- ggplot2::ggplot() +
       ggseqlogo::geom_logo(substring(toupper(data2$promoter), 26, 50),
                            seq_type = "dna", method = "probability", rev_stack_order = TRUE) +
       labs(x = "Position Relative to TSS") +
