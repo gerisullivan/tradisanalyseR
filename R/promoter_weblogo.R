@@ -9,7 +9,7 @@
 #'
 #' @export
 promoter_weblogo <- function(logfcs, promoters, save_plot = FALSE, save_path, save_fasta = FALSE){
-  for (i in seq(4, ncol(x), by=2)){
+  for (i in seq(4, ncol(logfcs), by=2)){
     wd <- getwd()
     if(missing(save_plot)){save_path = FALSE}
     if(missing(save_path)){save_path = wd}
