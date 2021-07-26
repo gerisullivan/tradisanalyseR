@@ -15,9 +15,14 @@
 #' @importFrom utils read.csv2 read.delim
 #' @export
 #'
-logfc_plots <- function(x, gene_list, pathway_name, plot_type, save_plot = FALSE)
+logfc_plots <- function(x, gene_list, plot_title, plot_type, save_plot = FALSE)
 {
-  if(missing(pathway_name)){pathway_name = "Genes of Interest"}
+  if(missing(plot_title)){plot_title = "Genes of Interest"}
+
+  plot_title = "Genes of Interest"
+  x <- logfcs
+  gene_list <- c("rpoS", "mukB", "rpoN")
+
   subset <- x[x$gene %in% gene_list, ]
   subset2 <- as.data.frame(subset)
   rownames(subset2) <- subset2$gene
@@ -46,9 +51,12 @@ logfc_plots <- function(x, gene_list, pathway_name, plot_type, save_plot = FALSE
       geom_bar(stat = "identity") +
       facet_wrap(~condition) +
       scale_fill_manual(values = c("gray20", "green4", "red")) +
-      theme(axis.text.x = element_text(angle = 45)) +
-      theme(plot.title = element_text(hjust = 0.5)) +
-      labs(x = "Gene", title = pathway_name, y = "Log2 Fold Change")
+      theme_light() +
+      theme(axis.text.x = element_text(angle = 45, hjust = 0.95),
+            plot.title = element_text(hjust = 0.5, size = 20),
+            strip.background = element_rect(colour = "black", fill = "gray90"),
+            strip.text = element_text(color = "black", size = 12)) +
+      labs(x = "Gene", title = plot_title, y = "Log2 Fold Change")
     print(plot)
   }
   if (plot_type == "gene"){
@@ -56,14 +64,17 @@ logfc_plots <- function(x, gene_list, pathway_name, plot_type, save_plot = FALSE
       geom_bar(stat = "identity") +
       facet_wrap(~gene) +
       scale_fill_manual(values = c("gray20", "green4", "red")) +
-      theme(axis.text.x = element_text(angle = 45)) +
-      theme(plot.title = element_text(hjust = 0.5)) +
-      labs(x = "Gene", title = pathway_name, y = "Log2 Fold Change")
+      theme_light() +
+      theme(axis.text.x = element_text(angle = 45, hjust = 0.95),
+            plot.title = element_text(hjust = 0.5, size = 20),
+            strip.background = element_rect(colour = "black", fill = "gray90"),
+            strip.text = element_text(color = "black", size = 12)) +
+      labs(x = "Gene", title = plot_title, y = "Log2 Fold Change")
     print(plot)
   }
   if (save_plot == TRUE){
     print(paste0("Saving to Directory: ", getwd()))
-    pdf(file = paste0(pathway_name, "_", paste0(plot_type), ".pdf"), width = 10, height = 10)
+    pdf(file = paste0(plot_title, "_", paste0(plot_type), ".pdf"), width = 10, height = 10)
     print(plot)
     dev.off()
   }

@@ -4,18 +4,18 @@
 \alias{logfc_plots}
 \title{Plot fold changes}
 \usage{
-logfc_plots(x, gene_list, pathway_name, plot_type, save_plot = FALSE)
+logfc_plots(x, gene_list, plot_title, plot_type, save_plot = FALSE)
 }
 \arguments{
 \item{x}{The output from structure_csv()}
 
 \item{gene_list}{A character vector of genes for which you want to plot the log2 fold changes for.}
 
-\item{pathway_name}{Optional. A character of the pathway name, or what you want to prefix your plots (e.g. "Amino acid biosynthesis pathway").}
-
 \item{plot_type}{Either "gene" or "condition". Chooses which variable to facet by.}
 
 \item{save_plot}{TRUE or FALSE. If TRUE, will save to your current directory instead of outputting to the plot window. Default is FALSE.}
+
+\item{pathway_name}{Optional. A character of the pathway name, or what you want to prefix your plots (e.g. "Amino acid biosynthesis pathway").}
 }
 \value{
 ggplots showing log2 fold change values for your gene list.
