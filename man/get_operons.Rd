@@ -4,16 +4,18 @@
 \alias{get_operons}
 \title{Plot transcription units}
 \usage{
-get_operons(logfcs, x, abslogfc = 0, sig = 0.05)
+get_operons(logfcs, x, abslogfc = 0, sig = 0.05, n = 36)
 }
 \arguments{
 \item{logfcs}{output from structure_csv()}
 
 \item{x}{tab separated file of BioCyc transcription unit output.}
 
-\item{abslogfc}{logFC cutoff for output. Defaults to 0 to obtain all significant genes.}
+\item{abslogfc}{absolute log fold change cutoff for output. Defaults to 0.}
 
 \item{sig}{significance level cutoff for output. Defaults to 0.05.}
+
+\item{n}{maximum number of facets to output in one graph. If there are too many significant genes to plot, will show the top n plots based on most significant. Defaults to 36. If you have too many significant genes, decrease your significance cutoff.}
 }
 \description{
 Takes a tab separated file with lists of genes in transcription units (made with BioCyc in mind) and output from structure_csv() to show transcription unit fold changes.
