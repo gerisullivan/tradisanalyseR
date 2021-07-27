@@ -2,20 +2,20 @@
 #'
 #' @description Creates fold change plots for a specified gene list.
 #'
-#' @param x The output from structure_csv()
+#' @param logfcs The output from structure_csv()
 #' @param gene_list A character vector of genes for which you want to plot the log2 fold changes for.
+#' @param sig Significance cut-off level. Default = 0.05.
 #' @param pathway_name Optional. A character of the pathway name, or what you want to prefix your plots (e.g. "Amino acid biosynthesis pathway").
 #' @param plot_type Either "gene" or "condition". Chooses which variable to facet by.
 #' @param save_plot TRUE or FALSE. If TRUE, will save to your current directory instead of outputting to the plot window. Default is FALSE.
 #'
-#' @return ggplots showing log2 fold change values for your gene list.
 #' @importFrom ggplot2 ggplot aes geom_bar facet_wrap scale_fill_manual theme element_text labs
 #' @importFrom stats complete.cases
 #' @importFrom grDevices dev.off pdf
 #' @importFrom utils read.csv2 read.delim
 #' @export
 #'
-logfc_plots <- function(x, gene_list, plot_title, plot_type, save_plot = FALSE)
+logfc_plots <- function(logfcs, gene_list, sig = 0.05, plot_title, plot_type, save_plot = FALSE)
 {
   if(missing(plot_title)){plot_title = "Genes of Interest"}
   subset <- x[x$gene %in% gene_list, ]
@@ -35,7 +35,7 @@ logfc_plots <- function(x, gene_list, plot_title, plot_type, save_plot = FALSE)
   data$gene <- paste(rownames(subset2))
   char <- gsub("_logFC", "", colnames(x)[grep("*logFC", colnames(x))])
   data$condition <- rep(char, each = length(unique(subset$gene)))
-  data$Significance <- ifelse(data$qvalue >= 0.05, "Insignificant",
+  data$Significance <- ifelse(data$qvalue >= sig, "Insignificant",
                               ifelse(data$logFC > 0, "Significant +ve", "Significant -ve"))
   data <- data[complete.cases(data),]
   data$logFC <- as.numeric(data$logFC)
