@@ -33,7 +33,7 @@ logfc_plots <- function(logfcs, gene_list, sig = 0.05, plot_title, plot_type, sa
   data <- as.data.frame(m, stringsAsFactors = FALSE)
 
   data$gene <- paste(rownames(subset2))
-  char <- gsub("_logFC", "", colnames(x)[grep("*logFC", colnames(x))])
+  char <- gsub("_logFC", "", colnames(logfcs)[grep("*logFC", colnames(logfcs))])
   data$condition <- rep(char, each = length(unique(subset$gene)))
   data$Significance <- ifelse(data$qvalue >= sig, "Insignificant",
                               ifelse(data$logFC > 0, "Significant +ve", "Significant -ve"))
@@ -49,9 +49,10 @@ logfc_plots <- function(logfcs, gene_list, sig = 0.05, plot_title, plot_type, sa
       ggplot2::theme_light() +
       ggplot2::theme(axis.text.x = element_text(angle = 45, hjust = 0.95),
             plot.title = element_text(hjust = 0.5, size = 20),
-            strip.background = element_rect(colour = "black", fill = "gray90"),
+            strip.background = ggplot2::element_rect(colour = "black", fill = "gray90"),
             strip.text = element_text(color = "black", size = 12)) +
-      ggplot2::labs(x = "Gene", title = plot_title, y = "Log2 Fold Change")
+      ggplot2::labs(x = "Gene", title = plot_title, y = "Log2 Fold Change") +
+      ggplot2::guides(fill = ggplot2::guide_legend(title = paste0("Significance (", sig, ")")))
     print(plot)
   }
   if (plot_type == "gene"){
@@ -62,9 +63,10 @@ logfc_plots <- function(logfcs, gene_list, sig = 0.05, plot_title, plot_type, sa
       ggplot2::theme_light() +
       ggplot2::theme(axis.text.x = element_text(angle = 45, hjust = 0.95),
             plot.title = element_text(hjust = 0.5, size = 20),
-            strip.background = element_rect(colour = "black", fill = "gray90"),
+            strip.background = ggplot2::element_rect(colour = "black", fill = "gray90"),
             strip.text = element_text(color = "black", size = 12)) +
-      ggplot2::labs(x = "Gene", title = plot_title, y = "Log2 Fold Change")
+      ggplot2::labs(x = "Gene", title = plot_title, y = "Log2 Fold Change") +
+      ggplot2::guides(fill = ggplot2::guide_legend(title = paste0("Significance (", sig, ")")))
     print(plot)
   }
   if (save_plot == TRUE){
