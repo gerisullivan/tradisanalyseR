@@ -10,8 +10,7 @@
 sig_info <- function(path, abslogfc = 1, sig = 0.05){
   myfiles <- lapply(list.files(path = path, pattern = "*.csv", full.names = TRUE), read.csv)
   filenames <- list.files(path = path, pattern = "*.csv") %>%
-    gsub(pattern = ".csv", replacement = "") %>%
-    gsub(pattern = "K12_", replacement = "")
+    gsub(pattern = ".csv", replacement = "")
 stats <- data.frame(condition = character(),
                     numsig = numeric(),
                     numfc = numeric())
